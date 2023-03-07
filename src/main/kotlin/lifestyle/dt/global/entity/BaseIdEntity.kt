@@ -1,4 +1,4 @@
-package lifestyle.dt.global
+package lifestyle.dt.global.entity
 
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType

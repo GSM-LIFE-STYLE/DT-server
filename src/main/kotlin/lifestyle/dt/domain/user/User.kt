@@ -1,6 +1,6 @@
 package lifestyle.dt.domain.user
 
-import lifestyle.dt.global.BaseIdEntity
+import lifestyle.dt.global.entity.BaseIdEntity
 import javax.persistence.Column
 import javax.persistence.Entity
 
