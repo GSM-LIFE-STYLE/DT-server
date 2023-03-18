@@ -29,11 +29,9 @@ class JwtParser(
 
     fun resolveToken(request: HttpServletRequest): String? {
         val token = request.getHeader("Authorization") ?: return null
-        return parseToken(token)
+        return if (token.startsWith(JwtGenerator.TOKEN_PREFIX)) token.replace(JwtGenerator.TOKEN_PREFIX, "") else null
     }
 
-    private fun parseToken(token: String): String? =
-        if (token.startsWith(JwtGenerator.TOKEN_PREFIX)) token.replace(JwtGenerator.TOKEN_PREFIX, "") else null
 
     private fun getTokenSubject(token: String, secret: Key): String =
         getTokenBody(token, secret).subject
