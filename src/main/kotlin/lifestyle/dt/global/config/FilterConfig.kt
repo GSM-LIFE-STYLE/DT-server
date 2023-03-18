@@ -11,7 +11,7 @@ import org.springframework.security.web.DefaultSecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 class FilterConfig(
-    private val jwtParser: JwtParser
+    private val jwtParser: JwtParser,
     private val objectMapper: ObjectMapper
 ) : SecurityConfigurerAdapter<DefaultSecurityFilterChain? , HttpSecurity>() {
 
