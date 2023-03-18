@@ -32,9 +32,6 @@ class JwtGenerator(
         generateToken(email, REFRESH_TYPE, jwtProperties.refreshSecret, REFRESH_EXP)
 
 
-    fun parseToken(token: String): String? =
-        if (token.startsWith(TOKEN_PREFIX)) token.replace(TOKEN_PREFIX, "") else null
-
     fun generateToken(sub: String, type: String, secret: Key, exp: Long): String {
         return Jwts.builder()
             .signWith(secret, SignatureAlgorithm.HS256)
