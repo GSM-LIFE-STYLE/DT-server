@@ -1,4 +1,4 @@
-package lifestyle.dt.global.annotation
+package lifestyle.dt.global.annotation.logger
 
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD)
