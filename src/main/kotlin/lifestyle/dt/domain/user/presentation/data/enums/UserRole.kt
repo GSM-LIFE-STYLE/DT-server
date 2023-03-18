@@ -1,4 +1,4 @@
-package lifestyle.dt.domain.user.enums
+package lifestyle.dt.domain.user.presentation.data.enums
 
 import org.springframework.security.core.GrantedAuthority
 

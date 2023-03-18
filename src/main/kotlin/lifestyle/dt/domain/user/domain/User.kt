@@ -1,6 +1,6 @@
 package lifestyle.dt.domain.user.domain
 
-import lifestyle.dt.domain.user.enums.UserRole
+import lifestyle.dt.domain.user.presentation.data.enums.UserRole
 import org.hibernate.annotations.GenericGenerator
 import java.util.UUID
 import javax.persistence.*
