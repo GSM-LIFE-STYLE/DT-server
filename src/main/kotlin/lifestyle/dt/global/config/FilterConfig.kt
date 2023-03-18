@@ -3,14 +3,14 @@ package lifestyle.dt.global.config
 import com.fasterxml.jackson.databind.ObjectMapper
 import lifestyle.dt.global.filter.ExceptionFilter
 import lifestyle.dt.global.filter.JwtTokenFilter
-import lifestyle.dt.global.security.jwt.JwtTokenProvider
+import lifestyle.dt.global.security.jwt.JwtGenerator
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.web.DefaultSecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 class FilterConfig(
-    private val jwtTokenProvider: JwtTokenProvider,
+    private val jwtTokenProvider: JwtGenerator,
     private val objectMapper: ObjectMapper
 ) : SecurityConfigurerAdapter<DefaultSecurityFilterChain? , HttpSecurity>() {
 

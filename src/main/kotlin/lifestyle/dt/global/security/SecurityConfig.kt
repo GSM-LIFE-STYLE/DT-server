@@ -3,7 +3,7 @@ package lifestyle.dt.global.security
 import com.fasterxml.jackson.databind.ObjectMapper
 import lifestyle.dt.global.config.FilterConfig
 import lifestyle.dt.global.security.handler.CustomAuthenticationEntryPoint
-import lifestyle.dt.global.security.jwt.JwtTokenProvider
+import lifestyle.dt.global.security.jwt.JwtGenerator
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -17,7 +17,7 @@ import org.springframework.web.cors.CorsUtils
 @EnableWebSecurity
 class SecurityConfig(
     private val objectMapper: ObjectMapper,
-    private val jwtTokenProvider: JwtTokenProvider
+    private val jwtGenerator: JwtGenerator
 ) {
 
     @Bean
@@ -44,7 +44,7 @@ class SecurityConfig(
             .authenticationEntryPoint(CustomAuthenticationEntryPoint(objectMapper))
 
             .and()
-            .apply(FilterConfig(jwtTokenProvider, objectMapper))
+            .apply(FilterConfig(jwtGenerator, objectMapper))
 
             .and()
             .build()
