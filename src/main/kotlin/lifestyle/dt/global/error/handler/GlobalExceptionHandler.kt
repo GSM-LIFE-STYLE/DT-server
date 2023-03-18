@@ -1,6 +1,6 @@
 package lifestyle.dt.global.error.handler
 
-import lifestyle.dt.global.annotation.Log4K
+import lifestyle.dt.global.annotation.logger.Log4K
 import lifestyle.dt.global.error.ErrorResponse
 import lifestyle.dt.global.error.exception.DTException
 import org.slf4j.Logger

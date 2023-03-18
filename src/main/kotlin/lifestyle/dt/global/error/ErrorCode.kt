@@ -7,6 +7,7 @@ enum class ErrorCode(
 
     BAD_REQUEST("잘못된 요청", 400),
     PASSWORD_MISMATCH("비밀번호가 일치하지 않습니다.", 400),
+    NOT_FOUND_USER("유저가 존재하지 않습니다.",404),
 
     UNAUTHORIZED("권한 없음", 401),
     EXPIRED_TOKEN("토큰 만료", 401),
