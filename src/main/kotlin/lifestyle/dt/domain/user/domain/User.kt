@@ -25,7 +25,7 @@ class User(
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
-    val roles: MutableList<UserRole> = mutableListOf(),
+    var roles: MutableList<UserRole> = mutableListOf(),
 
     @Column(nullable = true, columnDefinition = "TEXT")
     val profileUrl: String?,
