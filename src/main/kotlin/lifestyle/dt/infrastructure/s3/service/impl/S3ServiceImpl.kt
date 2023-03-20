@@ -18,6 +18,8 @@ class S3ServiceImpl(
 ): S3Service {
 
     override fun uploadImage(file: MultipartFile, dirName: String): String {
+        if (file.isEmpty) { return s3BucketProperties.defaultUrl }
+
         val fileName = fileNameToUUID(file.originalFilename.toString())
         val objectMetadata = ObjectMetadata()
         objectMetadata.contentLength = file.size
