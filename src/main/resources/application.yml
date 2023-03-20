@@ -1,1 +1,44 @@
+spring:
+  datasource:
+    driver-class-name: ${DB_DRIVER}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+
+  jpa:
+    database-platform: ${DB_PLATFORM}
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO}
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: ${FILE_SIZE}
+      max-request-size: ${REQUEST_SIZE}
+
+jwt:
+  accessSecret: ${JWT_ACCESS_SECRET}
+  refreshSecret: ${JWT_REFRESH_SECRET}
+  time:
+    accessExp: ${JWT_ACCESS_EXP}
+    refreshExp: ${JWT_REFRESH_EXP}
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS}
+      secretKey: ${AWS_SECRET}
+    s3:
+      bucket: ${AWS_BUCKET}
+      url: ${AWS_URL}
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
