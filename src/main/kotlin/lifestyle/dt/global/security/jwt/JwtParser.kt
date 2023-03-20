@@ -16,17 +16,12 @@ import javax.servlet.http.HttpServletRequest
 @Component
 class JwtParser(
     private val authDetailsService: AuthDetailsService,
-    private val jwtProperties: JwtProperties,
-    private val jwtGenerator: JwtGenerator
+    private val jwtProperties: JwtProperties
 ) {
 
     fun authentication(token: String): Authentication {
         val userDetails = authDetailsService.loadUserByUsername(getTokenSubject(token, jwtProperties.accessSecret))
         return UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
-    }
-
-    fun exactEmailFromRefreshToken(refresh: String): String {
-        return getTokenSubject(refresh, jwtProperties.refreshSecret)
     }
 
     fun resolveToken(request: HttpServletRequest): String? =
