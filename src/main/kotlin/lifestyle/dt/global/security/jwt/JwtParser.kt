@@ -9,13 +9,14 @@ import lifestyle.dt.global.security.exception.InvalidTokenException
 import lifestyle.dt.global.security.jwt.properties.JwtProperties
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
+import org.springframework.stereotype.Component
 import java.security.Key
 import javax.servlet.http.HttpServletRequest
 
+@Component
 class JwtParser(
     private val authDetailsService: AuthDetailsService,
     private val jwtProperties: JwtProperties,
-    private val jwtGenerator: JwtGenerator
 ) {
 
     fun authentication(token: String): Authentication {
@@ -30,7 +31,7 @@ class JwtParser(
     fun resolveToken(request: HttpServletRequest): String? =
         request.getHeader("Authorization")
             .let{ it ?: return null }
-            .let { if(it.startsWith(JwtGenerator.TOKEN_PREFIX)) it.replace(JwtGenerator.TOKEN_PREFIX, "") else null }
+            .let { if(it.startsWith(JwtProperties.TOKEN_PREFIX)) it.replace(JwtProperties.TOKEN_PREFIX, "") else null }
 
 
     private fun getTokenSubject(token: String, secret: Key): String =
