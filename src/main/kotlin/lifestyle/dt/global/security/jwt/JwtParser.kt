@@ -9,9 +9,11 @@ import lifestyle.dt.global.security.exception.InvalidTokenException
 import lifestyle.dt.global.security.jwt.properties.JwtProperties
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
+import org.springframework.stereotype.Component
 import java.security.Key
 import javax.servlet.http.HttpServletRequest
 
+@Component
 class JwtParser(
     private val authDetailsService: AuthDetailsService,
     private val jwtProperties: JwtProperties,

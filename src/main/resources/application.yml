@@ -20,8 +20,8 @@ spring:
 
   servlet:
     multipart:
-      max-file-size: ${FILE_SIZE}
-      max-request-size: ${REQUEST_SIZE}
+      max-file-size: ${MAX_FILE_SIZE}
+      max-request-size: ${MAX_REQUEST_SIZE}
 
 jwt:
   accessSecret: ${JWT_ACCESS_SECRET}
