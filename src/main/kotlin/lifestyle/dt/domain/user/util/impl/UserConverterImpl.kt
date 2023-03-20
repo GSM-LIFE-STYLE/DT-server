@@ -18,7 +18,7 @@ class UserConverterImpl : UserConverter {
         User(
             id = UUID.randomUUID(),
             email = dto.email,
-            encodedPassword = dto.password,
+            encodePassword = dto.password,
             name = dto.name,
             roles = Collections.singletonList(UserRole.ROLE_USER),
             profileUrl = profileUrl
