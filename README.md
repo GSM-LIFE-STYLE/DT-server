@@ -15,6 +15,7 @@ When the master branch changes
 $ git pull origin master
 ```
 
+<br>
 
 ### Application Setting
 ```a
@@ -28,6 +29,7 @@ spring-data-jpa
 spring-data-redis
 jackson-module-kotlin
 mysql-connector-j
+spring-cloud-starter-aws:2.4.4
 
 - test
 mockmvc
