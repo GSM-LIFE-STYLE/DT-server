@@ -4,7 +4,6 @@ import lifestyle.dt.domain.user.presentation.data.enums.UserRole
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*
-import javax.validation.constraints.Size
 
 @Entity
 class User(
@@ -14,13 +13,13 @@ class User(
     @Column(name = "user_id", columnDefinition = "BINARY(16)")
     val id: UUID,
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 20)
     val email: String,
 
-    @field:Size(max = 60)
+    @Column(nullable = false, length = 60)
     var encodePassword: String,
 
-    @field:Size(max  = 30)
+    @Column(nullable = false, length = 10)
     val name: String,
 
     @Enumerated(EnumType.STRING)
