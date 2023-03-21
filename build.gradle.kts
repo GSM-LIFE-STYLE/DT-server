@@ -27,6 +27,9 @@ dependencies {
 	// kotlin
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	// database
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 	runtimeOnly("com.mysql:mysql-connector-j")
 
 	// test

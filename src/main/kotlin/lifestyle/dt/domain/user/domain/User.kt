@@ -4,22 +4,22 @@ import lifestyle.dt.domain.user.presentation.data.enums.UserRole
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*
-import javax.validation.constraints.Size
 
 @Entity
 class User(
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "user_id", columnDefinition = "BINARY(16)")
     val id: UUID,
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true, length = 20)
     val email: String,
 
-    @field:Size(max = 60)
+    @Column(nullable = false, length = 60)
     var encodePassword: String,
 
-    @field:Size(max  = 30)
+    @Column(nullable = false, length = 10)
     val name: String,
 
     @Enumerated(EnumType.STRING)
@@ -27,6 +27,6 @@ class User(
     @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
     var roles: MutableList<UserRole> = mutableListOf(),
 
-    @Column(nullable = true, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     var profileUrl: String?,
 )
