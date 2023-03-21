@@ -17,10 +17,10 @@ class User(
     @Column(nullable = false, unique = true)
     val email: String,
 
-    @field:Size(min = 1, max = 60)
+    @field:Size(max = 60)
     var encodePassword: String,
 
-    @field:Size(min = 1, max  = 30)
+    @field:Size(max  = 30)
     val name: String,
 
     @Enumerated(EnumType.STRING)
