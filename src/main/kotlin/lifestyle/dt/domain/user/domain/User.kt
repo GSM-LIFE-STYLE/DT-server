@@ -11,16 +11,16 @@ class User(
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "user_id", columnDefinition = "BINARY(16)", nullable = false)
+    @Column(name = "user_id", columnDefinition = "BINARY(16)")
     val id: UUID,
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     val email: String,
 
-    @field:Size(max = 60)
+    @field:Size(min = 1, max = 60)
     var encodePassword: String,
 
-    @field:Size(max  = 30)
+    @field:Size(min = 1, max  = 30)
     val name: String,
 
     @Enumerated(EnumType.STRING)
@@ -28,6 +28,6 @@ class User(
     @CollectionTable(name = "UserRole", joinColumns = [JoinColumn(name = "id")])
     var roles: MutableList<UserRole> = mutableListOf(),
 
-    @Column(nullable = true, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     var profileUrl: String?,
 )
