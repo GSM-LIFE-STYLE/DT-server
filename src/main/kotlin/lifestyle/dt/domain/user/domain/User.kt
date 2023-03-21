@@ -13,7 +13,7 @@ class User(
     @Column(name = "user_id", columnDefinition = "BINARY(16)")
     val id: UUID,
 
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(nullable = false, unique = true)
     val email: String,
 
     @Column(nullable = false, length = 60)
