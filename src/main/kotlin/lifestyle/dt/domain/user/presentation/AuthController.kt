@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @RequestMapping("/api/v1/auth")
-class UserAuthController(
+class AuthController(
     private val userConverter: UserConverter,
     private val signUpService: SignUpService
 ) {
