@@ -2,7 +2,7 @@ package lifestyle.dt.domain.user.presentation
 
 import lifestyle.dt.domain.user.presentation.data.request.LoginRequest
 import lifestyle.dt.domain.user.presentation.data.request.SignUpRequest
-import lifestyle.dt.domain.user.presentation.data.response.LoginTokenResponse
+import lifestyle.dt.domain.user.presentation.data.response.TokenResponse
 import lifestyle.dt.domain.user.service.LoginService
 import lifestyle.dt.domain.user.service.SignUpService
 import lifestyle.dt.domain.user.util.UserConverter
@@ -33,7 +33,7 @@ class AuthController(
             .let { ResponseEntity.status(HttpStatus.CREATED).build() }
 
     @PostMapping("/login")
-    fun login(@RequestBody request: LoginRequest): ResponseEntity<LoginTokenResponse> =
+    fun login(@RequestBody request: LoginRequest): ResponseEntity<TokenResponse> =
         userConverter.toDto(request)
             .let { loginService.execute(it) }
             .let { userConverter.toResponse(it) }

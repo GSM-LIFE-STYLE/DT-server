@@ -4,7 +4,7 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import lifestyle.dt.domain.user.domain.RefreshToken
 import lifestyle.dt.domain.user.domain.repository.RefreshTokenRepository
-import lifestyle.dt.domain.user.presentation.data.dto.LoginTokenDto
+import lifestyle.dt.domain.user.presentation.data.dto.TokenDto
 import lifestyle.dt.global.security.jwt.properties.JwtExpTimeProperties
 import lifestyle.dt.global.security.jwt.properties.JwtProperties
 import org.springframework.stereotype.Component
@@ -19,7 +19,7 @@ class JwtGenerator(
     private val refreshTokenRepository: RefreshTokenRepository
 ) {
 
-    fun generate(userId: UUID): LoginTokenDto = LoginTokenDto(
+    fun generate(userId: UUID): TokenDto = TokenDto(
             accessToken = generateAccessToken(userId),
             refreshToken = generateRefreshToken(userId),
             accessTokenExpiredAt = accessExpiredTime,

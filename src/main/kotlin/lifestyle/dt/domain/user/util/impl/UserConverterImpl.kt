@@ -2,12 +2,12 @@ package lifestyle.dt.domain.user.util.impl
 
 import lifestyle.dt.domain.user.domain.User
 import lifestyle.dt.domain.user.presentation.data.dto.LoginDto
-import lifestyle.dt.domain.user.presentation.data.dto.LoginTokenDto
+import lifestyle.dt.domain.user.presentation.data.dto.TokenDto
 import lifestyle.dt.domain.user.presentation.data.dto.SignUpDto
 import lifestyle.dt.domain.user.presentation.data.enums.UserRole
 import lifestyle.dt.domain.user.presentation.data.request.LoginRequest
 import lifestyle.dt.domain.user.presentation.data.request.SignUpRequest
-import lifestyle.dt.domain.user.presentation.data.response.LoginTokenResponse
+import lifestyle.dt.domain.user.presentation.data.response.TokenResponse
 import lifestyle.dt.domain.user.util.UserConverter
 import org.springframework.stereotype.Component
 import java.util.*
@@ -31,7 +31,7 @@ class UserConverterImpl : UserConverter {
             profileUrl = profileUrl
         )
 
-    override fun toResponse(dto: LoginTokenDto): LoginTokenResponse =
-        LoginTokenResponse(dto.accessToken, dto.refreshToken, dto.accessTokenExpiredAt, dto.refreshTokenExpiredAt)
+    override fun toResponse(dto: TokenDto): TokenResponse =
+        TokenResponse(dto.accessToken, dto.refreshToken, dto.accessTokenExpiredAt, dto.refreshTokenExpiredAt)
 
 }
