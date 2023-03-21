@@ -1,11 +1,15 @@
 package lifestyle.dt.domain.user.presentation
 
+import lifestyle.dt.domain.user.presentation.data.request.LoginRequest
 import lifestyle.dt.domain.user.presentation.data.request.SignUpRequest
+import lifestyle.dt.domain.user.presentation.data.response.LoginTokenResponse
+import lifestyle.dt.domain.user.service.LoginService
 import lifestyle.dt.domain.user.service.SignUpService
 import lifestyle.dt.domain.user.util.UserConverter
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.RestController
@@ -15,7 +19,8 @@ import org.springframework.web.multipart.MultipartFile
 @RequestMapping("/api/v1/auth")
 class AuthController(
     private val userConverter: UserConverter,
-    private val signUpService: SignUpService
+    private val signUpService: SignUpService,
+    private val loginService: LoginService
 ) {
 
     @PostMapping("/signup")
@@ -26,5 +31,12 @@ class AuthController(
         userConverter.toDto(request)
             .let { signUpService.execute(it, file) }
             .let { ResponseEntity.status(HttpStatus.CREATED).build() }
+
+    @PostMapping("/login")
+    fun login(@RequestBody request: LoginRequest): ResponseEntity<LoginTokenResponse> =
+        userConverter.toDto(request)
+            .let { loginService.execute(it) }
+            .let { userConverter.toResponse(it) }
+            .let { ResponseEntity.ok(it) }
 
 }
