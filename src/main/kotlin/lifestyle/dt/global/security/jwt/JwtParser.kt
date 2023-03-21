@@ -27,7 +27,7 @@ class JwtParser(
     fun resolveToken(request: HttpServletRequest): String? =
         request.getHeader("Authorization")
             .let{ it ?: return null }
-            .let { if(it.startsWith(JwtGenerator.TOKEN_PREFIX)) it.replace(JwtGenerator.TOKEN_PREFIX, "") else null }
+            .let { if(it.startsWith(JwtProperties.TOKEN_PREFIX)) it.replace(JwtProperties.TOKEN_PREFIX, "") else null }
 
 
     private fun getTokenSubject(token: String, secret: Key): String =

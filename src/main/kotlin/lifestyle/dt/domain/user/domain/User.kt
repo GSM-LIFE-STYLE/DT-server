@@ -2,7 +2,7 @@ package lifestyle.dt.domain.user.domain
 
 import lifestyle.dt.domain.user.presentation.data.enums.UserRole
 import org.hibernate.annotations.GenericGenerator
-import java.util.UUID
+import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.Size
 
@@ -17,7 +17,7 @@ class User(
     val email: String,
 
     @field:Size(max = 60)
-    var password: String,
+    var encodePassword: String,
 
     @field:Size(max  = 30)
     val name: String,
@@ -28,8 +28,5 @@ class User(
     var roles: MutableList<UserRole> = mutableListOf(),
 
     @Column(nullable = true, columnDefinition = "TEXT")
-    val profileUrl: String?,
-) {
-
-
-}
+    var profileUrl: String?,
+)
