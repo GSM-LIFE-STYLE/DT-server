@@ -32,6 +32,7 @@ mysql-connector-j
 - test
 mockmvc
 mockito-kotlin
+kotest
 springmockk
 ```
 
