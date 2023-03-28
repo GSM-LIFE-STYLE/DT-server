@@ -49,6 +49,9 @@ dependencies {
 	// aws
 	implementation("io.awspring.cloud:spring-cloud-starter-aws:2.4.4")
 
+	// feign
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1")
+
 }
 
 tasks.withType<KotlinCompile> {
