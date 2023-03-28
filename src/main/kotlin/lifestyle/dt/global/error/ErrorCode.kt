@@ -18,5 +18,10 @@ enum class ErrorCode(
 
     DUPLICATE_EMAIL("중복되는 이메일입니다.", 409),
 
-    INTERNAL_SERVER_ERROR("서버 내부 에러", 500)
+    INTERNAL_SERVER_ERROR("서버 내부 에러", 500),
+
+    OTHER_BAD_REQUEST("other server bad request", 400),
+    OTHER_UNAUTHORIZED("other server unauthorized", 401),
+    OTHER_FORBIDDEN( "other server forbidden", 403),
+    OTHER_EXPIRED_TOKEN("other server expired token", 419),
 }
