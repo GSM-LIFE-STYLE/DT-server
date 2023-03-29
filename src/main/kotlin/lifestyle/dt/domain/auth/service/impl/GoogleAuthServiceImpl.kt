@@ -2,19 +2,18 @@ package lifestyle.dt.domain.auth.service.impl
 
 import lifestyle.dt.domain.auth.presentation.data.dto.TokenDto
 import lifestyle.dt.domain.auth.service.GoogleAuthService
-import lifestyle.dt.domain.auth.domain.RefreshToken
-import lifestyle.dt.domain.auth.domain.repository.RefreshTokenRepository
 import lifestyle.dt.domain.user.domain.repository.UserRepository
 import lifestyle.dt.domain.user.util.UserConverter
+import lifestyle.dt.global.annotation.service.TransactionalService
 import lifestyle.dt.global.security.GoogleAuthProperties
 import lifestyle.dt.global.security.jwt.JwtGenerator
-import lifestyle.dt.global.security.jwt.JwtParser
 import lifestyle.dt.infrastructure.feign.client.GoogleAuth
 import lifestyle.dt.infrastructure.feign.client.GoogleInfo
 import lifestyle.dt.infrastructure.feign.dto.request.GoogleCodeRequest
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 
+@TransactionalService
 class GoogleAuthServiceImpl(
     private val googleAuth: GoogleAuth,
     private val googleInfo: GoogleInfo,
@@ -22,8 +21,6 @@ class GoogleAuthServiceImpl(
     private val userRepository: UserRepository,
     private val userConverter: UserConverter,
     private val jwtGenerator: JwtGenerator,
-    private val jwtParser: JwtParser,
-    private val refreshTokenRepository: RefreshTokenRepository
 ): GoogleAuthService {
 
     private fun createUser(email: String, name: String, picture: String) =
