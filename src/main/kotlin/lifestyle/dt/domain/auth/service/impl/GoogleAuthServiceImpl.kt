@@ -42,18 +42,10 @@ class GoogleAuthServiceImpl(
 
         val googleInfoResponse = googleInfo.googleInfo(accessToken)
 
-        val email = googleInfoResponse.email
-        val name = googleInfoResponse.name
-        val picture = googleInfoResponse.picture
+        val (email, name, picture) = googleInfo.googleInfo(accessToken)
 
         val user = createUser(email, name, URLDecoder.decode(picture, StandardCharsets.UTF_8))
 
-        val refreshToken = jwtGenerator.generateRefreshToken(user.id)
-        refreshTokenRepository.save(
-            RefreshToken(refreshToken = refreshToken, userIdx = user.id, )
-        )
-
-
-        return t
+        return jwtGenerator.generate(user.id)
     }
 }
