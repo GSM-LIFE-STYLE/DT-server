@@ -40,6 +40,7 @@ class SecurityConfig(
             }).permitAll()
 
             .mvcMatchers("/api/v1/auth/**").permitAll()
+            .mvcMatchers("/google/**").permitAll()
             .anyRequest().denyAll()
 
             .and()
