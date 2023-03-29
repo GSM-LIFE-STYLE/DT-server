@@ -20,8 +20,9 @@ class GoogleAuthServiceImpl(
     private val googleAuthProperties: GoogleAuthProperties,
     private val userRepository: UserRepository,
     private val userConverter: UserConverter,
-    private val jwtGenerator: JwtGenerator,
+    private val jwtGenerator: JwtGenerator
 ): GoogleAuthService {
+
 
     private fun createUser(email: String, name: String, picture: String) =
         userRepository.findByEmail(email) ?: userRepository.save(userConverter.toEntity(email, name, picture))

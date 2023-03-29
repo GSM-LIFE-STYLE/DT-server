@@ -12,7 +12,8 @@ class QueryGoogleAuthLinkServiceImpl(
 
     companion object {
         private const val URL =
-            "%s?client_id=%s&redirect_uri=%s&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            "%s?client_id=%s&redirect_uri=%s&response_type=code" +
+                    "&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
     }
 
     override fun execute(): GoogleLoginLinkResponse =

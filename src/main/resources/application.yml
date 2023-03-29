@@ -48,5 +48,5 @@ auth:
   google:
     base-url: ${GOOGLE_BASE_URL}
     client-id: ${GOOGLE_CLIENT_ID}
-    client-secret: ${GOOGLE_SECRET}
+    client-secret: ${GOOGLE_CLIENT_SECRET}
     redirect-uri: ${GOOGLE_REDIRECT_URL}
