@@ -31,6 +31,16 @@ class UserConverterImpl : UserConverter {
             profileUrl = profileUrl
         )
 
+    override fun toEntity(email: String, name: String, picture: String): User =
+        User(
+            id = UUID.randomUUID(),
+            email = email,
+            name = name,
+            roles = Collections.singletonList(UserRole.ROLE_USER),
+            profileUrl = picture
+        )
+
+
     override fun toResponse(dto: TokenDto): TokenResponse =
         TokenResponse(dto.accessToken, dto.refreshToken, dto.accessTokenExpiredAt, dto.refreshTokenExpiredAt)
 

@@ -17,7 +17,7 @@ class User(
     val email: String,
 
     @Column(nullable = false, length = 60)
-    var encodePassword: String,
+    var encodePassword: String = "",
 
     @Column(nullable = false, length = 10)
     val name: String,

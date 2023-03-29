@@ -13,6 +13,7 @@ interface UserConverter {
     fun toDto(request: SignUpRequest): SignUpDto
     fun toDto(request: LoginRequest): LoginDto
     fun toEntity(dto: SignUpDto, profileUrl: String): User
+    fun toEntity(email: String, name: String, picture: String): User
     fun toResponse(dto: TokenDto): TokenResponse
 
 }
