@@ -20,7 +20,6 @@ import org.springframework.web.cors.CorsUtils
 class SecurityConfig(
     private val objectMapper: ObjectMapper,
     private val jwtParser: JwtParser
-
 ) {
 
     @Bean
