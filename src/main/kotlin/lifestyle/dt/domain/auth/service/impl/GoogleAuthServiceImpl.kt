@@ -40,8 +40,6 @@ class GoogleAuthServiceImpl(
             )
         ).accessToken
 
-        val googleInfoResponse = googleInfo.googleInfo(accessToken)
-
         val (email, name, picture) = googleInfo.googleInfo(accessToken)
 
         val user = createUser(email, name, URLDecoder.decode(picture, StandardCharsets.UTF_8))
