@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
-@RestController
+@RestController("/google")
 class GoogleController(
     private val googleAuthService: GoogleAuthService,
     private val googleQueryGoogleAuthLinkService: QueryGoogleAuthLinkService,
     private val userConverter: UserConverter
 ) {
 
-    @GetMapping("/google/auth")
+    @GetMapping("/link")
     fun queryGoogleAuthLink(): ResponseEntity<String> =
         googleQueryGoogleAuthLinkService.execute()
             .let { ResponseEntity.ok(it) }
 
 
-    @GetMapping("/receive-code")
+    @GetMapping("/sign")
     fun googleAuthLogin(@RequestParam("code") code: String): ResponseEntity<TokenResponse> =
         googleAuthService.execute(code)
             .let { ResponseEntity.ok(userConverter.toResponse(it)) }
