@@ -1,4 +1,4 @@
-package lifestyle.dt.domain.user.domain
+package lifestyle.dt.domain.auth.domain
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.redis.core.RedisHash
@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 data class RefreshToken(
     @Id
     val refreshToken: String,
-    val userIdx: UUID,
+    val userId: UUID,
     @TimeToLive(unit = TimeUnit.SECONDS)
     val expiredAt: Int
 )

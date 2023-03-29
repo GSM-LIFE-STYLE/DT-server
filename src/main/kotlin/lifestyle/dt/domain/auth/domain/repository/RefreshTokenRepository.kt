@@ -1,6 +1,6 @@
-package lifestyle.dt.domain.user.domain.repository
+package lifestyle.dt.domain.auth.domain.repository
 
-import lifestyle.dt.domain.user.domain.RefreshToken
+import lifestyle.dt.domain.auth.domain.RefreshToken
 import org.springframework.data.repository.CrudRepository
 
 interface RefreshTokenRepository: CrudRepository<RefreshToken, String>
