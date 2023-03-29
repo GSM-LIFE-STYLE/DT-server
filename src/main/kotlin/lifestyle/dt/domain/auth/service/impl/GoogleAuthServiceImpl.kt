@@ -26,7 +26,6 @@ class GoogleAuthServiceImpl(
     private fun createUser(email: String, name: String, picture: String) =
         userRepository.findByEmail(email) ?: userRepository.save(userConverter.toEntity(email, name, picture))
 
-
     override fun execute(code: String): TokenDto {
         val accessToken = googleAuth.googleAuth(
             GoogleCodeRequest(

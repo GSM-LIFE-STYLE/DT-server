@@ -1,6 +1,6 @@
 package lifestyle.dt.infrastructure.feign.dto.request
 
-data class GoogleCodeRequest @JvmOverloads constructor(
+data class GoogleCodeRequest(
     val code: String,
     val clientId: String,
     val clientSecret: String,
