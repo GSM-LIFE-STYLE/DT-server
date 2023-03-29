@@ -14,7 +14,7 @@ class GoogleController(
     private val userConverter: UserConverter
 ) {
 
-    @GetMapping("/receive_code")
+    @GetMapping("/receive-code")
     fun googleAuthLogin(@RequestParam("code") code: String): ResponseEntity<TokenResponse> =
         googleAuthService.execute(code)
             .let { ResponseEntity.ok(userConverter.toResponse(it)) }
