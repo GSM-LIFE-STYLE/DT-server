@@ -4,7 +4,7 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import lifestyle.dt.domain.user.domain.RefreshToken
 import lifestyle.dt.domain.user.domain.repository.RefreshTokenRepository
-import lifestyle.dt.domain.user.presentation.data.dto.TokenDto
+import lifestyle.dt.domain.auth.presentation.data.dto.TokenDto
 import lifestyle.dt.global.security.jwt.properties.JwtExpTimeProperties
 import lifestyle.dt.global.security.jwt.properties.JwtProperties
 import org.springframework.stereotype.Component

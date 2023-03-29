@@ -1,11 +1,11 @@
-package lifestyle.dt.domain.user.service.impl
+package lifestyle.dt.domain.auth.service.impl
 
 import lifestyle.dt.domain.user.domain.repository.UserRepository
-import lifestyle.dt.domain.user.exception.PasswordMismatchException
-import lifestyle.dt.domain.user.exception.UserNotFoundException
-import lifestyle.dt.domain.user.presentation.data.dto.LoginDto
-import lifestyle.dt.domain.user.presentation.data.dto.TokenDto
-import lifestyle.dt.domain.user.service.LoginService
+import lifestyle.dt.domain.auth.exception.PasswordMismatchException
+import lifestyle.dt.domain.auth.exception.UserNotFoundException
+import lifestyle.dt.domain.auth.presentation.data.dto.LoginDto
+import lifestyle.dt.domain.auth.presentation.data.dto.TokenDto
+import lifestyle.dt.domain.auth.service.LoginService
 import lifestyle.dt.global.annotation.service.TransactionalService
 import lifestyle.dt.global.security.jwt.JwtGenerator
 import org.springframework.security.crypto.password.PasswordEncoder

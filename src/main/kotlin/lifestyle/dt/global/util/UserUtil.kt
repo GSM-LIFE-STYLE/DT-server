@@ -2,7 +2,7 @@ package lifestyle.dt.global.util
 
 import lifestyle.dt.domain.user.domain.User
 import lifestyle.dt.domain.user.domain.repository.UserRepository
-import lifestyle.dt.domain.user.exception.UserNotFoundException
+import lifestyle.dt.domain.auth.exception.UserNotFoundException
 import lifestyle.dt.global.security.auth.AuthDetails
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.core.context.SecurityContextHolder

@@ -1,4 +1,4 @@
-package lifestyle.dt.domain.user.presentation.data.request
+package lifestyle.dt.domain.auth.presentation.data.request
 
 import javax.validation.constraints.Size
 

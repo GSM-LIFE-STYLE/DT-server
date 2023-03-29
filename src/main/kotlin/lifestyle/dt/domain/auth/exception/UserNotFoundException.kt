@@ -1,4 +1,4 @@
-package lifestyle.dt.domain.user.exception
+package lifestyle.dt.domain.auth.exception
 
 import lifestyle.dt.global.error.ErrorCode
 import lifestyle.dt.global.error.exception.DTException

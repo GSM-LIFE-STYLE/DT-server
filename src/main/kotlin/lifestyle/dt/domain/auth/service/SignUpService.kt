@@ -1,6 +1,6 @@
-package lifestyle.dt.domain.user.service
+package lifestyle.dt.domain.auth.service
 
-import lifestyle.dt.domain.user.presentation.data.dto.SignUpDto
+import lifestyle.dt.domain.auth.presentation.data.dto.SignUpDto
 import org.springframework.web.multipart.MultipartFile
 import java.util.*
 

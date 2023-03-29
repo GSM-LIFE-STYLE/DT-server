@@ -1,4 +1,4 @@
-package lifestyle.dt.domain.user.presentation.data.response
+package lifestyle.dt.domain.auth.presentation.data.response
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.time.ZonedDateTime

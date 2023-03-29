@@ -1,4 +1,4 @@
-package lifestyle.dt.domain.user.presentation.data.dto
+package lifestyle.dt.domain.auth.presentation.data.dto
 
 data class LoginDto(
     val email: String,

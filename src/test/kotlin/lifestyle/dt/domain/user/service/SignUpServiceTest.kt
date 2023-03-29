@@ -8,10 +8,10 @@ import io.mockk.mockk
 import io.mockk.verify
 import lifestyle.dt.domain.user.domain.User
 import lifestyle.dt.domain.user.domain.repository.UserRepository
-import lifestyle.dt.domain.user.exception.DuplicateEmailException
-import lifestyle.dt.domain.user.presentation.data.dto.SignUpDto
-import lifestyle.dt.domain.user.presentation.data.enums.UserRole
-import lifestyle.dt.domain.user.service.impl.SignUpServiceImpl
+import lifestyle.dt.domain.auth.exception.DuplicateEmailException
+import lifestyle.dt.domain.auth.presentation.data.dto.SignUpDto
+import lifestyle.dt.domain.auth.presentation.data.enums.UserRole
+import lifestyle.dt.domain.auth.service.impl.SignUpServiceImpl
 import lifestyle.dt.domain.user.util.UserConverter
 import lifestyle.dt.infrastructure.s3.service.S3Service
 import org.springframework.mock.web.MockMultipartFile

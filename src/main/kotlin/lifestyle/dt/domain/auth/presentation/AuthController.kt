@@ -1,10 +1,10 @@
-package lifestyle.dt.domain.user.presentation
+package lifestyle.dt.domain.auth.presentation
 
-import lifestyle.dt.domain.user.presentation.data.request.LoginRequest
-import lifestyle.dt.domain.user.presentation.data.request.SignUpRequest
-import lifestyle.dt.domain.user.presentation.data.response.TokenResponse
-import lifestyle.dt.domain.user.service.LoginService
-import lifestyle.dt.domain.user.service.SignUpService
+import lifestyle.dt.domain.auth.presentation.data.request.LoginRequest
+import lifestyle.dt.domain.auth.presentation.data.request.SignUpRequest
+import lifestyle.dt.domain.auth.presentation.data.response.TokenResponse
+import lifestyle.dt.domain.auth.service.LoginService
+import lifestyle.dt.domain.auth.service.SignUpService
 import lifestyle.dt.domain.user.util.UserConverter
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
