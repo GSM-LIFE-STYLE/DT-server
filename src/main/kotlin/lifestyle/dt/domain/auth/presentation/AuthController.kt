@@ -8,6 +8,7 @@ import lifestyle.dt.domain.auth.service.SignUpService
 import lifestyle.dt.domain.user.util.UserConverter
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -38,5 +39,7 @@ class AuthController(
             .let { loginService.execute(it) }
             .let { userConverter.toResponse(it) }
             .let { ResponseEntity.ok(it) }
+
+
 
 }
