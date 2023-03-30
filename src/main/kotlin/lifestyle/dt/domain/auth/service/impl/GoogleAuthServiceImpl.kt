@@ -20,11 +20,16 @@ class GoogleAuthServiceImpl(
     private val jwtGenerator: JwtGenerator
 ): GoogleAuthService {
 
+    companion object {
+        const val GRANT_TYPE = "authorization_code"
+    }
+
     private fun createUser(email: String, name: String, picture: String) =
         userRepository.findByEmail(email) ?: userRepository.save(userConverter.toEntity(email, name, picture))
 
     override fun execute(code: String): TokenDto {
         val accessToken = googleAuth.googleAuth(
+            grantType = GRANT_TYPE,
             code = code,
             clientId = googleAuthProperties.clientId,
             clientSecret = googleAuthProperties.clientSecret
