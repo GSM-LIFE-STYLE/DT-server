@@ -11,7 +11,6 @@ import lifestyle.dt.infrastructure.feign.error.exception.OtherUnAuthorizedExcept
 class FeignClientErrorDecoder : ErrorDecoder{
 
     override fun decode(methodKey: String?, response: Response): FeignException =
-
         when(response.status()) {
             in 400 .. 499 -> when (response.status()) {
                 401 -> throw OtherUnAuthorizedException()
