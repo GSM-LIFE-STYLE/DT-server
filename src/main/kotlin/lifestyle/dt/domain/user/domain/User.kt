@@ -1,6 +1,6 @@
 package lifestyle.dt.domain.user.domain
 
-import lifestyle.dt.domain.user.presentation.data.enums.UserRole
+import lifestyle.dt.domain.auth.presentation.data.enums.UserRole
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*
@@ -17,7 +17,7 @@ class User(
     val email: String,
 
     @Column(nullable = false, length = 60)
-    var encodePassword: String,
+    var encodePassword: String = "",
 
     @Column(nullable = false, length = 10)
     val name: String,

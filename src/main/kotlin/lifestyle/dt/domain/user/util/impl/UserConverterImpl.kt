@@ -1,13 +1,13 @@
 package lifestyle.dt.domain.user.util.impl
 
 import lifestyle.dt.domain.user.domain.User
-import lifestyle.dt.domain.user.presentation.data.dto.LoginDto
-import lifestyle.dt.domain.user.presentation.data.dto.TokenDto
-import lifestyle.dt.domain.user.presentation.data.dto.SignUpDto
-import lifestyle.dt.domain.user.presentation.data.enums.UserRole
-import lifestyle.dt.domain.user.presentation.data.request.LoginRequest
-import lifestyle.dt.domain.user.presentation.data.request.SignUpRequest
-import lifestyle.dt.domain.user.presentation.data.response.TokenResponse
+import lifestyle.dt.domain.auth.presentation.data.dto.LoginDto
+import lifestyle.dt.domain.auth.presentation.data.dto.TokenDto
+import lifestyle.dt.domain.auth.presentation.data.dto.SignUpDto
+import lifestyle.dt.domain.auth.presentation.data.enums.UserRole
+import lifestyle.dt.domain.auth.presentation.data.request.LoginRequest
+import lifestyle.dt.domain.auth.presentation.data.request.SignUpRequest
+import lifestyle.dt.domain.auth.presentation.data.response.TokenResponse
 import lifestyle.dt.domain.user.util.UserConverter
 import org.springframework.stereotype.Component
 import java.util.*
@@ -30,6 +30,16 @@ class UserConverterImpl : UserConverter {
             roles = Collections.singletonList(UserRole.ROLE_USER),
             profileUrl = profileUrl
         )
+
+    override fun toEntity(email: String, name: String, picture: String): User =
+        User(
+            id = UUID.randomUUID(),
+            email = email,
+            name = name,
+            roles = Collections.singletonList(UserRole.ROLE_USER),
+            profileUrl = picture
+        )
+
 
     override fun toResponse(dto: TokenDto): TokenResponse =
         TokenResponse(dto.accessToken, dto.refreshToken, dto.accessTokenExpiredAt, dto.refreshTokenExpiredAt)

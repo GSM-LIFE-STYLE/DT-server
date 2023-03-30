@@ -20,7 +20,6 @@ import org.springframework.web.cors.CorsUtils
 class SecurityConfig(
     private val objectMapper: ObjectMapper,
     private val jwtParser: JwtParser
-
 ) {
 
     @Bean
@@ -40,6 +39,7 @@ class SecurityConfig(
             }).permitAll()
 
             .mvcMatchers("/api/v1/auth/**").permitAll()
+            .mvcMatchers("/google/**").permitAll()
             .anyRequest().denyAll()
 
             .and()

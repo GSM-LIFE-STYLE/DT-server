@@ -2,6 +2,8 @@ package lifestyle.dt.global.security.jwt
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
+import io.jsonwebtoken.InvalidClaimException
+import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
 import lifestyle.dt.global.security.auth.AuthDetailsService
 import lifestyle.dt.global.security.exception.ExpiredTokenException
@@ -42,7 +44,7 @@ class JwtParser(
                 .body
         } catch (e: ExpiredJwtException) {
             throw ExpiredTokenException()
-        } catch (e: Exception) {
+        } catch (e: JwtException) {
             throw InvalidTokenException()
         }
     }

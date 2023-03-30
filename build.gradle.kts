@@ -50,7 +50,9 @@ dependencies {
 	implementation("io.awspring.cloud:spring-cloud-starter-aws:2.4.4")
 
 	// feign
-	implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1")
+	implementation("io.github.openfeign:feign-httpclient:11.9.1")
+	implementation("org.springframework.cloud:spring-cloud-starter-openfeign:3.1.4")
+
 
 }
 
