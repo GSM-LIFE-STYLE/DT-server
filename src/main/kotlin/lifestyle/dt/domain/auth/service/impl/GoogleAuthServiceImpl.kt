@@ -9,9 +9,6 @@ import lifestyle.dt.global.security.GoogleAuthProperties
 import lifestyle.dt.global.security.jwt.JwtGenerator
 import lifestyle.dt.infrastructure.feign.client.GoogleAuth
 import lifestyle.dt.infrastructure.feign.client.GoogleInfo
-import lifestyle.dt.infrastructure.feign.dto.request.GoogleCodeRequest
-import java.net.URLDecoder
-import java.nio.charset.StandardCharsets
 
 @TransactionalService
 class GoogleAuthServiceImpl(
@@ -23,23 +20,19 @@ class GoogleAuthServiceImpl(
     private val jwtGenerator: JwtGenerator
 ): GoogleAuthService {
 
-
     private fun createUser(email: String, name: String, picture: String) =
         userRepository.findByEmail(email) ?: userRepository.save(userConverter.toEntity(email, name, picture))
 
     override fun execute(code: String): TokenDto {
         val accessToken = googleAuth.googleAuth(
-            GoogleCodeRequest(
-                code = URLDecoder.decode(code, StandardCharsets.UTF_8),
-                clientId = googleAuthProperties.clientId,
-                clientSecret = googleAuthProperties.clientSecret,
-                redirectUri = googleAuthProperties.redirectUri
-            )
+            code = code,
+            clientId = googleAuthProperties.clientId,
+            clientSecret = googleAuthProperties.clientSecret
         ).accessToken
 
         val (email, name, picture) = googleInfo.googleInfo(accessToken)
 
-        val user = createUser(email, name, URLDecoder.decode(picture, StandardCharsets.UTF_8))
+        val user = createUser(email, name, picture)
 
         return jwtGenerator.generate(user.id)
     }
