@@ -24,7 +24,8 @@ spring-data-redis
 jackson-module-kotlin
 mysql-connector-j
 spring-cloud-starter-aws:2.4.4
-spring-cloud-starter-openfeign:4.0.1
+feign-httpclient:11.9.1
+spring-cloud-starter-openfeign:3.1.4
 
 -> test
 mockmvc
