@@ -2,7 +2,6 @@ package lifestyle.dt.global.security.jwt
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
-import io.jsonwebtoken.InvalidClaimException
 import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
 import lifestyle.dt.global.security.auth.AuthDetailsService
@@ -26,10 +25,13 @@ class JwtParser(
         return UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
     }
 
-    fun resolveToken(request: HttpServletRequest): String? =
+    fun resolveAccessToken(request: HttpServletRequest): String? =
         request.getHeader("Authorization")
             .let{ it ?: return null }
             .let { if(it.startsWith(JwtProperties.TOKEN_PREFIX)) it.replace(JwtProperties.TOKEN_PREFIX, "") else null }
+
+    fun resolveRefreshToken(refreshToken: String): String? =
+        if (refreshToken.startsWith(JwtProperties.TOKEN_PREFIX)) refreshToken.replace(JwtProperties.TOKEN_PREFIX, "") else null
 
 
     private fun getTokenSubject(token: String, secret: Key): String =
