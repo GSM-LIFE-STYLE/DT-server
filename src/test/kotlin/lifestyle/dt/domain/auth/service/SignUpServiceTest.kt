@@ -1,4 +1,4 @@
-package lifestyle.dt.domain.user.service
+package lifestyle.dt.domain.auth.service
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
