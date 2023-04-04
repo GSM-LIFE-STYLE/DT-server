@@ -2,7 +2,7 @@ package lifestyle.dt.domain.auth.service.impl
 
 import lifestyle.dt.domain.auth.presentation.data.response.GoogleLoginLinkResponse
 import lifestyle.dt.domain.auth.service.QueryGoogleAuthLinkService
-import lifestyle.dt.global.security.GoogleAuthProperties
+import lifestyle.dt.infrastructure.feign.properties.GoogleAuthProperties
 import org.springframework.stereotype.Service
 
 @Service

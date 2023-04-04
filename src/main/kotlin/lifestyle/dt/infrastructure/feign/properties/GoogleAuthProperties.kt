@@ -1,4 +1,4 @@
-package lifestyle.dt.global.security
+package lifestyle.dt.infrastructure.feign.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding

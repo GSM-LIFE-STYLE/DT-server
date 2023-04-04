@@ -10,7 +10,7 @@ import lifestyle.dt.domain.auth.service.impl.GoogleAuthServiceImpl
 import lifestyle.dt.domain.user.domain.User
 import lifestyle.dt.domain.user.domain.repository.UserRepository
 import lifestyle.dt.domain.user.util.UserConverter
-import lifestyle.dt.global.security.GoogleAuthProperties
+import lifestyle.dt.infrastructure.feign.properties.GoogleAuthProperties
 import lifestyle.dt.global.security.jwt.JwtGenerator
 import lifestyle.dt.infrastructure.feign.client.GoogleAuth
 import lifestyle.dt.infrastructure.feign.client.GoogleInfo
@@ -52,7 +52,7 @@ class GoogleAuthServiceTest: DescribeSpec({
         )
 
         context("가입된 유저의 Oauth 코드가 주어진다면"){
-            every { googleAuth.googleAuth(code = code, grantType = any(), clientId = any(), clientSecret = any(), ) } returns GoogleTokenResponse(
+            every { googleAuth.googleAuth(code = code, grantType = any(), clientId = any(), clientSecret = any(), redirectUri = any()) } returns GoogleTokenResponse(
                 googleAccessToken
             )
             every { googleInfo.googleInfo(googleAccessToken, any()) } returns GoogleInfoResponse(email, name, picture)

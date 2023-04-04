@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestParam
 @FeignClient(name = "googleFeignClient", url = "https://oauth2.googleapis.com/token")
 interface GoogleAuth {
 
-    @PostMapping
-    fun googleAuth(
-        @RequestParam("grant_type") grantType: String,
+    @PostMapping(headers = ["Content-Type: application/x-www-form-urlencoded"])
+    fun queryAccessToken(
+        @RequestParam("code") code: String,
         @RequestParam("client_id") clientId: String,
         @RequestParam("client_secret") clientSecret: String,
-        @RequestParam code: String
+        @RequestParam("redirect_uri") redirectUri: String,
+        @RequestParam("grant_type") grantType: String = "authorization_code"
     ): GoogleTokenResponse
-
 }
