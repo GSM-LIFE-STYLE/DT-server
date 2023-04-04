@@ -23,6 +23,9 @@ spring:
       max-file-size: ${MAX_FILE_SIZE}
       max-request-size: ${MAX_REQUEST_SIZE}
 
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
 jwt:
   accessSecret: ${JWT_ACCESS_SECRET}
   refreshSecret: ${JWT_REFRESH_SECRET}
