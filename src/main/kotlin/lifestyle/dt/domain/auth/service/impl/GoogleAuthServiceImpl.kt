@@ -23,19 +23,17 @@ class GoogleAuthServiceImpl(
     private fun createUser(email: String, name: String, picture: String) =
         userRepository.findByEmail(email) ?: userRepository.save(userConverter.toEntity(email, name, picture))
 
-    override fun execute(code: String): TokenDto {
-
-        val accessToken = googleAuth.queryAccessToken(
+    private fun getOauthAccessToken(code: String): String =
+        googleAuth.queryAccessToken(
             code = code,
             clientId = googleAuthProperties.clientId,
             clientSecret = googleAuthProperties.clientSecret,
             redirectUri = googleAuthProperties.redirectUri,
         ).accessToken
 
-        println(accessToken)
-
+    override fun execute(code: String): TokenDto {
+        val accessToken = getOauthAccessToken(code)
         val (email, name, picture) = googleInfo.googleInfo(accessToken)
-
         val user = createUser(email, name, picture)
 
         return jwtGenerator.generate(user.id)
