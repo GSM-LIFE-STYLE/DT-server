@@ -6,18 +6,17 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import lifestyle.dt.common.AnyValueObjectGenerator.anyValueObject
 import lifestyle.dt.domain.user.domain.User
 import lifestyle.dt.domain.user.domain.repository.UserRepository
 import lifestyle.dt.domain.auth.exception.PasswordMismatchException
 import lifestyle.dt.domain.auth.exception.UserNotFoundException
 import lifestyle.dt.domain.auth.presentation.data.dto.LoginDto
 import lifestyle.dt.domain.auth.presentation.data.dto.TokenDto
-import lifestyle.dt.domain.auth.presentation.data.enums.UserRole
 import lifestyle.dt.domain.auth.service.impl.LoginServiceImpl
 import lifestyle.dt.global.security.jwt.JwtGenerator
 import org.springframework.security.crypto.password.PasswordEncoder
 import java.time.ZonedDateTime
-import java.util.*
 
 class LoginServiceTest: BehaviorSpec({
     val userRepository = mockk<UserRepository>()
@@ -25,15 +24,12 @@ class LoginServiceTest: BehaviorSpec({
     val jwtGenerator = mockk<JwtGenerator>()
     val loginService = LoginServiceImpl(userRepository, passwordEncoder, jwtGenerator)
 
-    val userId = UUID.randomUUID()
-    val email = "test@test.com"
-    val password = "test password"
-    val name = "test name"
-    val profileUrl = "test url"
-
     Given("loginDto가 주어질때") {
+        val email = "test@test.com"
+        val password = "test password"
+
         val loginDto = LoginDto(email, password)
-        val user = User(userId, email, password, name, Collections.singletonList(UserRole.ROLE_USER), profileUrl)
+        val user = anyValueObject<User>("email" to email)
         val tokenDto = TokenDto(
             accessToken = "test accessToken",
             refreshToken = "test refreshToken",
@@ -58,6 +54,7 @@ class LoginServiceTest: BehaviorSpec({
         }
 
         When("틀린 비밀번호로 요청을 하면") {
+            every { userRepository.findByEmail(loginDto.email) } returns user
             every { passwordEncoder.matches(password, user.encodePassword) } returns false
 
             Then("PasswordMismatchException이 터져야한다.") {
