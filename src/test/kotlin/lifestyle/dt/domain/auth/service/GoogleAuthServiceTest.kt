@@ -52,7 +52,7 @@ class GoogleAuthServiceTest: DescribeSpec({
         )
 
         context("가입된 유저의 Oauth 코드가 주어진다면"){
-            every { googleAuth.googleAuth(code = code, grantType = any(), clientId = any(), clientSecret = any(), redirectUri = any()) } returns GoogleTokenResponse(
+            every { googleAuth.queryAccessToken(code = code, grantType = any(), clientId = any(), clientSecret = any(), redirectUri = any()) } returns GoogleTokenResponse(
                 googleAccessToken
             )
             every { googleInfo.googleInfo(googleAccessToken, any()) } returns GoogleInfoResponse(email, name, picture)
